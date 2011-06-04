@@ -106,7 +106,7 @@ int main (int argc, char *argv[])
 	vbox = gtk_vbox_new(FALSE,2);
 	hbox = gtk_hbox_new(FALSE,2);
 	gtk_container_add(GTK_CONTAINER(window),vbox);
-	gtk_box_pack_start(GTK_BOX(vbox),hbox,FALSE,TRUE,1);
+	gtk_box_pack_start(GTK_BOX(vbox),hbox,TRUE,TRUE,1);
 	GtkWidget *text_view = gtk_text_view_new();
 	gtk_text_view_set_editable(GTK_TEXT_VIEW(text_view),TRUE);
 	gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(text_view),GTK_WRAP_CHAR);
