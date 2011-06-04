@@ -91,27 +91,32 @@ int main (int argc, char *argv[])
 {
 	gtk_init(&argc,&argv);
 	g_user_file = fopen(".gqtuser","r+");
-	if(!g_user_file)
+	if(g_user_file)
+	{
+		fscanf(g_user_file,"%s",g_user.id);
+	}
+	
+	if(!g_user_file || strlen(g_user.id) != 9)
 	{
 		g_user_file = fopen(".gqtuser","w+");
 		AddUser();
 	}
-	else
-	{
-		fscanf(g_user_file,"%s",g_user.id);
-	}
 	GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_default_size(GTK_WINDOW(window),250,300);
 	GtkWidget *vbox,*hbox;
+	GtkWidget *frame;
 	vbox = gtk_vbox_new(FALSE,2);
 	hbox = gtk_hbox_new(FALSE,2);
 	gtk_container_add(GTK_CONTAINER(window),vbox);
 	gtk_box_pack_start(GTK_BOX(vbox),hbox,TRUE,TRUE,1);
+	frame = gtk_frame_new("Tweet text");
+	gtk_box_pack_start(GTK_BOX(hbox),frame,TRUE,TRUE,1);
 	GtkWidget *text_view = gtk_text_view_new();
 	gtk_text_view_set_editable(GTK_TEXT_VIEW(text_view),TRUE);
 	gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(text_view),GTK_WRAP_CHAR);
-	gtk_box_pack_start(GTK_BOX(hbox),text_view,TRUE,TRUE,1);
+	gtk_container_add(GTK_CONTAINER(frame),text_view);
 	GtkWidget *send_button = gtk_button_new_with_label("Tweet it!");
+	gtk_button_set_image(GTK_BUTTON(send_button),gtk_image_new_from_stock(GTK_STOCK_YES,GTK_ICON_SIZE_BUTTON));
 	hbox = gtk_hbox_new(FALSE,2);
 	gtk_box_pack_start(GTK_BOX(vbox),hbox,FALSE,TRUE,1);
 	gtk_box_pack_start(GTK_BOX(hbox),send_button,TRUE,FALSE,1);
