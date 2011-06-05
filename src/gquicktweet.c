@@ -66,7 +66,6 @@ void AddUser(void)
 {
     if(g_user_file)
     {
-		//NotifyNotification *notify;
         GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
         gtk_window_set_title(GTK_WINDOW(window),"Authorize App");
         gtk_window_set_default_size(GTK_WINDOW(window),200,70);
@@ -136,5 +135,6 @@ int main (int argc, char *argv[])
 	g_signal_connect(G_OBJECT(send_button),"clicked",G_CALLBACK(GtkSendTweet),text_view);
 	gtk_widget_show_all(window);
 	gtk_main();
+	notify_uninit();
 	return 0;
 }
