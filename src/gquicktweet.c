@@ -22,6 +22,8 @@
 
 #include <gtk/gtk.h>
 
+#include <libnotify/notify.h>
+
 #include "twitter.h"
 
 user_t g_user;
@@ -31,6 +33,7 @@ FILE *g_user_file = NULL;
 void GtkSendTweet(GtkWidget *parent,gpointer data)
 {
     GtkTextBuffer *buf = gtk_text_view_get_buffer(GTK_TEXT_VIEW(data));
+    NotifyNotification *notify;
     GtkTextIter start,end;
     gtk_text_buffer_get_start_iter(buf,&start);
     gtk_text_buffer_get_end_iter(buf,&end);
@@ -38,6 +41,9 @@ void GtkSendTweet(GtkWidget *parent,gpointer data)
     if(strlen(t_tweet) < 140)
     {
         Tweet(t_tweet,&g_user);
+        notify = notify_notification_new("Just tweeted...",t_tweet,NULL,NULL);
+        notify_notification_set_icon_from_pixbuf(notify,gdk_pixbuf_new_from_file("twit_logo.png",NULL));
+        notify_notification_show(notify,NULL);
     }
 }
 
@@ -60,6 +66,7 @@ void AddUser(void)
 {
     if(g_user_file)
     {
+		//NotifyNotification *notify;
         GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
         gtk_window_set_title(GTK_WINDOW(window),"Authorize App");
         gtk_window_set_default_size(GTK_WINDOW(window),200,70);
@@ -92,6 +99,9 @@ void AddUser(void)
 int main (int argc, char *argv[])
 {
 	gtk_init(&argc,&argv);
+	notify_init("GQuickTweet");
+	GtkSettings *default_settings = gtk_settings_get_default();
+	g_object_set(default_settings, "gtk-button-images", TRUE, NULL); 
 	g_user_file = fopen(".gqtuser","r+");
 	if(g_user_file)
 	{
