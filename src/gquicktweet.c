@@ -42,7 +42,7 @@ void GtkSendTweet(GtkWidget *parent,gpointer data)
     {
         Tweet(t_tweet,&g_user);
         notify = notify_notification_new("Just tweeted...",t_tweet,NULL,NULL);
-        notify_notification_set_icon_from_pixbuf(notify,gdk_pixbuf_new_from_file("twit_logo.png",NULL));
+        notify_notification_set_icon_from_pixbuf(notify,gdk_pixbuf_new_from_file("img/twit_logo.png",NULL)); //TODO - Use avatar as icon
         notify_notification_show(notify,NULL);
     }
 }
@@ -68,7 +68,8 @@ void AddUser(void)
     {
         GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
         gtk_window_set_title(GTK_WINDOW(window),"Authorize App");
-        gtk_window_set_default_size(GTK_WINDOW(window),200,70);
+        gtk_window_set_resizable(GTK_WINDOW(window),FALSE);
+        gtk_window_set_icon(GTK_WINDOW(window),gdk_pixbuf_new_from_file("img/gqt_logo.png",NULL));
         GtkWidget *vbox,*hbox;
         vbox = gtk_vbox_new(FALSE,2);
         hbox = gtk_hbox_new(FALSE,2);
@@ -87,7 +88,7 @@ void AddUser(void)
         hbox = gtk_hbox_new(FALSE,2);
         gtk_box_pack_start(GTK_BOX(vbox),hbox,FALSE,TRUE,1);
         gtk_box_pack_start(GTK_BOX(hbox),button_auth,TRUE,TRUE,1);
-        gtk_button_set_image(GTK_BUTTON(button),gtk_image_new_from_file("twit_logo.png"));
+        gtk_button_set_image(GTK_BUTTON(button),gtk_image_new_from_file("img/twit_logo.png"));
         gtk_button_set_image(GTK_BUTTON(button_auth),gtk_image_new_from_stock(GTK_STOCK_APPLY,GTK_ICON_SIZE_BUTTON));
         g_signal_connect(G_OBJECT(button),"clicked",G_CALLBACK(GtkObtainToken),NULL);
         g_signal_connect(G_OBJECT(button_auth),"clicked",G_CALLBACK(GtkValidatePIN),entry);
@@ -114,6 +115,7 @@ int main (int argc, char *argv[])
 	}
 	GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_default_size(GTK_WINDOW(window),250,300);
+	gtk_window_set_icon(GTK_WINDOW(window),gdk_pixbuf_new_from_file("img/gqt_logo.png",NULL));
 	GtkWidget *vbox,*hbox;
 	GtkWidget *frame;
 	vbox = gtk_vbox_new(FALSE,2);
