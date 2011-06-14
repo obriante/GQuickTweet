@@ -1,0 +1,6 @@
+- Make Auth window close automatically
+- Clean code
+- Multiple account support (?)
+- Use xml for config file
+- Clean libui_gtk
+- Other stuff.
