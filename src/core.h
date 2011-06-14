@@ -51,6 +51,7 @@ typedef struct
 	GtkWidget *fixed;
 	GtkWidget *tw_view;
 	GtkWidget *frame;
+	GtkWidget *authwin;
 	GtkWidget *pinentry;
 	int x_window;
 	int y_window;

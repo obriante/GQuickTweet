@@ -92,6 +92,7 @@ void GtkValidatePIN(GtkWidget *parent,GQT_Core *data)
     {
         ValidatePIN(pin,data->token,data->user);
         fwrite(data->user,sizeof(Twitter_user),1,data->userconf);
+        gtk_widget_destroy(data->authwin);
     }
 }
 
@@ -111,14 +112,14 @@ static void GQT_GTKUserAdd(GQT_Core *data)
 {
 	if(data->userconf)
     {
-        GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-        gtk_window_set_title(GTK_WINDOW(window),"Authorize App");
-        gtk_window_set_resizable(GTK_WINDOW(window),FALSE);
-        gtk_window_set_icon(GTK_WINDOW(window),gdk_pixbuf_new_from_file("img/gqt_logo.png",NULL));
+        data->authwin = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+        gtk_window_set_title(GTK_WINDOW(data->authwin),"Authorize App");
+        gtk_window_set_resizable(GTK_WINDOW(data->authwin),FALSE);
+        gtk_window_set_icon(GTK_WINDOW(data->authwin),gdk_pixbuf_new_from_file("img/gqt_logo.png",NULL));
         GtkWidget *vbox,*hbox;
         vbox = gtk_vbox_new(FALSE,2);
         hbox = gtk_hbox_new(FALSE,2);
-        gtk_container_add(GTK_CONTAINER(window),vbox);
+        gtk_container_add(GTK_CONTAINER(data->authwin),vbox);
         gtk_box_pack_start(GTK_BOX(vbox),hbox,FALSE,TRUE,1);
         GtkWidget *button = gtk_button_new_with_label("Get PIN");
         gtk_box_pack_start(GTK_BOX(hbox),button,TRUE,TRUE,1);
@@ -137,7 +138,7 @@ static void GQT_GTKUserAdd(GQT_Core *data)
         gtk_button_set_image(GTK_BUTTON(button_auth),gtk_image_new_from_stock(GTK_STOCK_APPLY,GTK_ICON_SIZE_BUTTON));
         g_signal_connect(G_OBJECT(button),"clicked",G_CALLBACK(GtkObtainToken),data);
         g_signal_connect(G_OBJECT(button_auth),"clicked",G_CALLBACK(GtkValidatePIN),data);
-        gtk_widget_show_all(window);
+        gtk_widget_show_all(data->authwin);
     }
 }
 
