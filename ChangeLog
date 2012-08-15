@@ -5,3 +5,5 @@
 - xml config file
 - removed libui_gtk
 - fixed code with the funcions of libtwitc
+- Registration now is a dialog! (fixed style)
+- char count on writing.
