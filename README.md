@@ -24,8 +24,8 @@ GTK+ Desktop Gadget for quickly sending tweets
 ### libtwitc Required:
 
 *   libcurl
-*    oauth
-*    libxml-2.0
+*   oauth
+*   libxml-2.0
 
 
 ## How to Generate Makefile:
@@ -41,20 +41,20 @@ GTK+ Desktop Gadget for quickly sending tweets
 	$ ./configure
 	$ make
 	$ su
-    	# make install
+   	# make install
 
 
 ## Unistalling - Makefile
 
-    $ su
-    # make uninstall
+	$ su
+	# make uninstall
 
 
 ## Debug
 
 On compiling process run:
 
-    $ ./configure --enable-debug
+	$ ./configure --enable-debug
 
 To have more details use gdb
 
