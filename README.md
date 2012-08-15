@@ -1,7 +1,6 @@
 # GQuickTweet
 
-([TwitCrusader](https://raw.github.com/KernelMonkey/GQuickTweet/master/share/image/gqt_logo.png)
-
+[![TwitCrusader](https://raw.github.com/KernelMonkey/GQuickTweet/master/share/image/gqt_logo.png)]()
 GTK+ Desktop Gadget for quickly sending tweets
 
 ## How to download this repository:
