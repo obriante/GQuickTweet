@@ -1,13 +1,13 @@
-bin_PROGRAMS = twc
-twc_SOURCES = \
-GQuickTweet.c \
-twitter.c
+bin_PROGRAMS = gquicktweet
+gquicktweet_SOURCES = \
+twitter.c \
+gquicktweet.c
 
-twc_LDADD = \
+
+gquicktweet_LDADD = \
 	$(EXTERN_LIB_DEP_LIBS) \
 	@libnotify_LIBS@ \
-	@libtwitc_LIBS@	\
-	@libuigtk_LIBS@
+	@libtwitc_LIBS@	
 
 
 if DEBUG
@@ -21,7 +21,6 @@ AM_CPPFLAGS = \
 	$(EXTERN_LIB_DEP_CFLAGS) \
 	@libnotify_CFLAGS@ \
 	@libtwitc_CFLAGS@ \
-	@libuigtk_CFLAGS@ \
 	@GQuickTweet_CFLAGS@
 else
 
@@ -33,6 +32,6 @@ AM_CPPFLAGS = \
 	$(EXTERN_LIB_DEP_CFLAGS) \
 	@libnotify_CFLAGS@ \
 	@libtwitc_CFLAGS@ \
-	@libtwcgui_CFLAGS@
+	@GQuickTweet_CFLAGS@
 
 endif

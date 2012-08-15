@@ -1,4 +1,4 @@
-//      core.h
+//      keys.h
 //      
 //      Copyright 2011 Alfredo Liguoro <freddy@haxaddicts.net>
 //      
@@ -17,47 +17,10 @@
 //      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 //      MA 02110-1301, USA.
 
-#ifndef _CORE_H_
-#define _CORE_H_
-
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-
-#include "libui_gtk/libui_gtk.h"
+#ifndef _KEYS_H_
+#define _KEYS_H_
 
 #define CONSUMER_KEY "dufOWZyhvWBwGO0osvfBQ"
 #define CONSUMER_SECRET "91Sw4yExaTbqN0bq8cbnyA20B8V6FlIctFk9xj71M0"
-
-#define WIDTH 200
-#define HEIGHT 250
-
-typedef struct
-{
-	char id[10];
-	char screen_name[140];
-	char token[50];
-	char secret[41];
-}Twitter_user;
-
-typedef struct
-{
-	Twitter_user *user;
-	GtkWidget *window;
-	GtkWidget *button_close;
-	GtkWidget *button_move;
-	GtkWidget *button_tweet;
-	GtkWidget *icon;
-	GtkWidget *fixed;
-	GtkWidget *tw_view;
-	GtkWidget *frame;
-	GtkWidget *authwin;
-	GtkWidget *pinentry;
-	int x_window;
-	int y_window;
-	gboolean presence;
-	FILE *userconf;
-	char *token;
-}GQT_Core;
 
 #endif

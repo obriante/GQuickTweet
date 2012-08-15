@@ -1,7 +1,7 @@
 # DOXYGEN SUPPORT
 include $(top_srcdir)/aminclude.am
 
-SUBDIRS = share/image libtwitc libuigtk src
+SUBDIRS = share/image share/applications libtwitc src
 
 progdir = $(datadir)/@PACKAGE@
 

@@ -17,9 +17,14 @@
 //      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 //      MA 02110-1301, USA.
 
-#include "core.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 #include <oauth.h>
+
+#include <keys.h>
+#include <twitter.h>
 
 char *get_value(char **array,int len,const char *param_name)
 {
@@ -34,20 +39,20 @@ char *get_value(char **array,int len,const char *param_name)
 
 char *ObtainToken(void)
 {
-	char *signed_url,*params,*url;
+	char *signed_url,*params,*cmd;
 	char **split = NULL;
 	int len;
 	signed_url = oauth_sign_url2("http://api.twitter.com/oauth/request_token",NULL,OA_HMAC,NULL,CONSUMER_KEY,CONSUMER_SECRET,NULL,NULL);
 	params = oauth_http_get(signed_url,NULL);
 	free(signed_url);
 	len = oauth_split_url_parameters(params,&split);
-	asprintf(&url,"http://api.twitter.com/oauth/authorize?oauth_token=%s",get_value(split,len,"oauth_token"));
-	gtk_show_uri(NULL,url,GDK_CURRENT_TIME,NULL);
-	free(url);
+	asprintf(&cmd,"xdg-open \"%s?oauth_token=%s\"","http://api.twitter.com/oauth/authorize",get_value(split,len,"oauth_token"));
+	system(cmd);
+	free(cmd);
 	return params;
 }
 
-void ValidatePIN(const char *pin,const char *token,Twitter_user *user)
+void ValidatePIN(const char *pin,const char *token,user_t *user)
 {
 	char **split = NULL;
 	char *dummy = NULL;
@@ -66,7 +71,7 @@ void ValidatePIN(const char *pin,const char *token,Twitter_user *user)
 	strcpy(user->id,get_value(split,len,"user_id"));
 }
 
-void Tweet(const char *msg,Twitter_user *user)
+void Tweet(const char *msg,user_t *user)
 {
 	char *tweet_url,*dummy = NULL,*signed_url;
 	asprintf(&tweet_url,"%s%s","http://api.twitter.com/1/statuses/update.xml?status=",oauth_url_escape(msg));

@@ -39,12 +39,6 @@ AC_CONFIG_SUBDIRS( libtwitc )
 AC_SUBST(libtwitc_CFLAGS)
 AC_SUBST(libtwitc_LIBS)
 
-AC_CONFIG_SUBDIRS( libuigtk )
-	libuigtk_CFLAGS="-I\$(top_srcdir)/libuigtk/include"
-	libuigtk_LIBS="\$(top_builddir)/libuigtk/src/libuigtk.a"
-AC_SUBST(libuigtk_CFLAGS)
-AC_SUBST(libuigtk_LIBS)
-
 AC_CONFIG_SUBDIRS( GQuickTweet )
 	GQuickTweet_CFLAGS="-I\$(top_srcdir)/include"
 AC_SUBST(GQuickTweet_CFLAGS)
@@ -64,7 +58,9 @@ AM_CONDITIONAL(DEBUG, test x"$debug" = x"true")
 AC_PROG_RANLIB
 
 AC_CONFIG_FILES([
-libui_gtk/Makefile
+share/image/Makefile
+share/applications/Makefile
+libtwitc/Makefile
 src/Makefile
 Makefile
 ])
