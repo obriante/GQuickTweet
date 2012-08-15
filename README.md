@@ -11,7 +11,7 @@ GTK+ Desktop Gadget for quickly sending tweets
 
 ## Authors:
 	Alfredo Liguoro  <freddy@haxaddicts.net>
-	Orazio Briante <orazio.1985@hotmail.com>
+	Orazio Briante <orazio.briante@hotmail.it>
 
 ## Required
 
