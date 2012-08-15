@@ -2,5 +2,6 @@
 
 - Autotools
 - submodules libtwitc
+- xml config file
 - removed libui_gtk
 - fixed code with the funcions of libtwitc
