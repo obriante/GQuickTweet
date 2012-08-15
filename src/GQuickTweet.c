@@ -74,7 +74,7 @@ void on_tweet_clicked(GtkWidget *parent,GQT_Core *data)
     if(strlen(t_tweet) < 140)
     {
         Tweet(t_tweet,data->user);
-        notify = notify_notification_new("Just tweeted...",t_tweet,NULL,NULL);
+        notify = notify_notification_new("Just tweeted...",t_tweet, NULL);
         notify_notification_set_icon_from_pixbuf(notify,gdk_pixbuf_new_from_file("img/tweet.png",NULL)); //TODO - Use avatar as icon
         notify_notification_show(notify,NULL);
     }

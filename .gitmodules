@@ -1,0 +1,6 @@
+[submodule "libtwitc"]
+	path = libtwitc
+	url = git://github.com/KernelMonkey/libtwitc.git
+[submodule "libuigtk"]
+	path = libuigtk
+	url = git://github.com/KernelMonkey/libui_gtk.git
