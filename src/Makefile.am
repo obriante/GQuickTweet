@@ -1,6 +1,5 @@
 bin_PROGRAMS = gquicktweet
 gquicktweet_SOURCES = \
-twitter.c \
 gquicktweet.c
 
 

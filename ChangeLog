@@ -1,0 +1,6 @@
+@20120815 (2012-08-15)
+
+- Autotools
+- submodules libtwitc
+- removed libui_gtk
+- fixed code with the funcions of libtwitc

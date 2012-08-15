@@ -1,6 +1,8 @@
 //      keys.h
 //      
 //      Copyright 2011 Alfredo Liguoro <freddy@haxaddicts.net>
+//
+//		2012 Orazio Briante <orazio.briante@hotmail.it>
 //      
 //      This program is free software; you can redistribute it and/or modify
 //      it under the terms of the GNU General Public License as published by
@@ -17,8 +19,8 @@
 //      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 //      MA 02110-1301, USA.
 
-#ifndef _KEYS_H_
-#define _KEYS_H_
+#ifndef _APPKEYS_H_
+#define _APPKEYS_H_
 
 #define CONSUMER_KEY "dufOWZyhvWBwGO0osvfBQ"
 #define CONSUMER_SECRET "91Sw4yExaTbqN0bq8cbnyA20B8V6FlIctFk9xj71M0"

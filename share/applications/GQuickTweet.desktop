@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=GQuickTweet
-Comment=Gadget for quickly sending tweets 
+Comment=GTK+ Desktop Gadget for quickly sending tweets 
 TryExec=gquicktweet
 Exec=gquicktweet
 Icon=gqt_logo
