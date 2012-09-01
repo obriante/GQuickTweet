@@ -21,6 +21,7 @@
  */
 
 
+#include <logc/logc.h>
 
 #include <twitc/twitc.h>
 
@@ -79,7 +80,7 @@ void printGError(GError* error)
 {
 	if(error)
 	{
-		error((string_t)error->message);
+		log(ERROR,(string_t)error->message);
 		g_error_free(error);
 		error=NULL;
 	}
@@ -97,13 +98,13 @@ void GtkSendTweet(GtkWidget *parent,gpointer data)
 	if(strlen(t_tweet) < 140 && strlen(t_tweet) >0)
 	{
 
-		if(!sendTweet(twURLS, g_user, t_tweet))
+		if(!updateStatus(twURLS, g_user, t_tweet))
 		{
-			info("Message correctly tweetted!");
+			log(INFO,"Message correctly tweetted!");
 			gtk_text_buffer_delete(buf, &start, &end);
 		}
 		else
-			info("Message not tweetted!");
+			log(INFO,"Message not tweetted!");
 
 		notify = notify_notification_new("Just tweeted...",t_tweet,NULL);
 		GError *error=NULL;
@@ -120,7 +121,6 @@ init_charcount(string_t msg)
 	if(!charcount)
 		charcount=gtk_statusbar_new ();
 
-	gtk_toolbar_set_style(GTK_TOOLBAR(charcount), GTK_TOOLBAR_ICONS);
 	gtk_statusbar_push (GTK_STATUSBAR(charcount), 0, msg);
 }
 
@@ -234,7 +234,7 @@ AddUser()
 
 	gtk_widget_destroy(dialog);
 
-	twURLS=initURLS(OAUTH_API_URL_DEFAULT, HTTPS_API_URL_DEFAULT);
+	twURLS=initURLS(OAUTH_API_URL_DEFAULT, HTTPS_API_URL_DEFAULT, SEARCH_URL_DEFAULT);
 
 	/* Set all dialog options (color, size, position, logo, icon, etc) */
 	dialog = gtk_dialog_new();
@@ -249,7 +249,7 @@ AddUser()
 
 	if(error)
 	{
-		error((string_t)error->message);
+		log(ERROR,(string_t)error->message);
 		g_error_free(error);
 		error=NULL;
 	}
@@ -302,8 +302,9 @@ main (int argc, char *argv[])
 	if(createDirectory(programDir))
 		createDirectory(configDir);
 
-	initLog(fileLog, high, 1024*1000);
-	info("~~~~~~~~~~\t%s started\t~~~~~~~~~~", PROG_NAME);
+	initLog(LOG_FILE_VIDEO, LOG_FILE_VIDEO);
+	initLogFile(fileLog, (1024*1000) );
+	log(INFO,"~~~~~~~~~~\t%s started\t~~~~~~~~~~", PROG_NAME);
 
 	if(gtk_init_check(&argc, &argv))
 	{
@@ -311,7 +312,7 @@ main (int argc, char *argv[])
 
 		notify_init(PROG_NAME);
 
-		twURLS=initURLS(OAUTH_API_URL_DEFAULT, HTTPS_API_URL_DEFAULT);
+		twURLS=initURLS(OAUTH_API_URL_DEFAULT, HTTPS_API_URL_DEFAULT,SEARCH_URL_DEFAULT);
 
 		g_user=readUserFile(configFile); // later
 
@@ -328,12 +329,12 @@ main (int argc, char *argv[])
 
 	}
 	else
-		error("GTK can't be initialized");
+		log(ERROR,"GTK can't be initialized");
 
 
 	notify_uninit();
 
-	info("~~~~~~~~~~\t%s stopped\t~~~~~~~~~~", PROG_NAME);
+	log(INFO,"~~~~~~~~~~\t%s stopped\t~~~~~~~~~~", PROG_NAME);
 	uninitLog();
 
 	return EXIT_SUCCESS;
