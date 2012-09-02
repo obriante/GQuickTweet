@@ -52,11 +52,13 @@ GTK+ Desktop Gadget for quickly sending tweets
 
 ## Debug
 
-On compiling process run:
+To see more informations run:
+
+	$ gquicktweet --debug
+
+To debug the code, on compiling process, run:
 
 	$ ./configure --enable-debug
-
-To have more details use gdb
 
 
 ## Reference:
@@ -64,6 +66,10 @@ To have more details use gdb
 Project libtwitc:
 
 	repo: https://github.com/KernelMonkey/libtwitc
+
+Project liblogc:
+
+	repo: https://github.com/KernelMonkey/liblogc
 
 TwitCrusader:
 

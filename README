@@ -37,12 +37,13 @@ Unistalling - Makefile
 
 Debug
 
-On compiling process run:
+To see more informations run:
 
-    $ ./configure --enable-debug
+	$ gquicktweet --debug
 
-To have more details use gdb
+To debug the code, on compiling process, run:
 
+	$ ./configure --enable-debug
 
 Reference:
 

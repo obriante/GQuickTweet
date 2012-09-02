@@ -26,6 +26,7 @@
 #include <twitc/twitc.h>
 
 #include <appkeys.h>
+#include <console.h>
 #include <gquicktweet.h>
 
 #include <libnotify/notify.h>
@@ -290,20 +291,25 @@ byte_t
 main (int argc, char *argv[])
 {
 
+	initLog(FILE_VIDEO_LOG, DISABLED_LOG);
+
+	byte_t shparam=shellParam(argc,argv);
+
+	if (shparam == EXIT_FAILURE)
+		return EXIT_FAILURE;
+
 	debug("PROG_DIR:\t%s", PROG_DIR);
 	debug("ICONS_DIR:\t%s", ICONS_DIR);
 	debug("PACKAGE_LOCALE_DIR:\t%s", PACKAGE_LOCALE_DIR);
-
-	fprintf(stdout, "\n\nGQuickTweet- GTK+ Desktop Gadget for quickly sending tweets \n");
-	fprintf(stdout, "Copyright (C) 2012 - Alfredo Liguoro <freddy@haxaddicts.net>,\nOrazio Briante <orazio.briante@hotmail.it>\n\n");
 
 	program_path_init();
 
 	if(createDirectory(programDir))
 		createDirectory(configDir);
 
-	initLog(LOG_FILE_VIDEO, LOG_FILE_VIDEO);
-	initLogFile(fileLog, (1024*1000) );
+	checkFileSize(fileLog, (1024 * 1000));
+	openLogFile(fileLog);
+
 	log(INFO,"~~~~~~~~~~\t%s started\t~~~~~~~~~~", PROG_NAME);
 
 	if(gtk_init_check(&argc, &argv))
@@ -320,10 +326,8 @@ main (int argc, char *argv[])
 		{
 			AddUser();
 		}else
+
 			run_window();
-
-		// this is the MAIN
-
 
 		gtk_main();
 
