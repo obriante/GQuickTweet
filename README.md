@@ -26,6 +26,7 @@ GTK+ Desktop Gadget for quickly sending tweets
 *   libcurl
 *   oauth
 *   libxml-2.0
+*   json
 
 
 ## How to Generate Makefile:
