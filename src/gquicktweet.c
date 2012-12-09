@@ -235,7 +235,7 @@ AddUser()
 
 	gtk_widget_destroy(dialog);
 
-	twURLS=initURLS(OAUTH_API_URL_DEFAULT, HTTPS_API_URL_DEFAULT, SEARCH_URL_DEFAULT);
+	twURLS=initURLS(OAUTH_URL_DEFAULT, API_URL_DEFAULT,SEARCH_URL_DEFAULT, DEFAULT_API_FORMAT);
 
 	/* Set all dialog options (color, size, position, logo, icon, etc) */
 	dialog = gtk_dialog_new();
@@ -318,7 +318,7 @@ main (int argc, char *argv[])
 
 		notify_init(PROG_NAME);
 
-		twURLS=initURLS(OAUTH_API_URL_DEFAULT, HTTPS_API_URL_DEFAULT,SEARCH_URL_DEFAULT);
+		twURLS=initURLS(OAUTH_URL_DEFAULT, API_URL_DEFAULT,SEARCH_URL_DEFAULT, DEFAULT_API_FORMAT);
 
 		g_user=readUserFile(configFile); // later
 

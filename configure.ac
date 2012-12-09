@@ -30,7 +30,7 @@ DX_PDF_FEATURE(ON)
 DX_PS_FEATURE(OFF)
 DX_INIT_DOXYGEN([$PACKAGE_NAME],[GQuickTweet.doxyfile],[doc])
 
-PKG_CHECK_MODULES(EXTERN_LIB_DEP, [libcurl libxml-2.0 oauth gtk+-2.0])
+PKG_CHECK_MODULES(EXTERN_LIB_DEP, [libcurl libxml-2.0 oauth gtk+-2.0 json])
 
 PKG_CHECK_MODULES(libnotify, [libnotify >= 0.7.3], , [
 		AC_MSG_RESULT(no)

@@ -28,10 +28,7 @@
 #define         CONFIG_DIR              "configurations"
 #define         CONFIG_FILE             "Config.gqt"
 
-#define         TWC_UPDATES_URL         "https://raw.github.com/KernelMonkey/libtwitc/master/VERSION"
-
-#define         OAUTH_API_URL_DEFAULT   "https://api.twitter.com/oauth/"
-#define         HTTPS_API_URL_DEFAULT   "https://api.twitter.com/1/"
+#define         TWC_UPDATES_URL         "https://raw.github.com/freddy-156/GQuickTweet/master/VERSION"
 
 
 #endif /* GQUICKTWEET_H_ */
